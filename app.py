@@ -7,10 +7,10 @@ app = Flask(__name__)
 def get_connection():
     return psycopg2.connect(
         host="localhost",
-        port="5432",
+        port="5432", 
         database="pokemon",
-        user="postgres",
-        password="jn"
+        user="tu usuario",
+        password="crea tu bd y coloca tu contra"
     )
 
 # ruta raíz
@@ -43,4 +43,5 @@ def home():
     return render_template("index.html", pokemons=pokemons)
 
 if __name__ == "__main__":
+
     app.run(debug=True)
