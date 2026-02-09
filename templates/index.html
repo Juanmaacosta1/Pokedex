@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pokédex</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-dragon"></i> Pokédex</h1>
+            <p class="subtitle">Colección de Pokémon - Estadísticas Completas</p>
+        </header>
+
+        <div class="pokemon-grid">
+            {% if pokemons %}
+                {% for pokemon in pokemons %}
+                <div class="pokemon-card">
+                    <div class="pokemon-header">
+                        <div class="pokemon-id">#{{ "%03d"|format(pokemon[0]) }}</div>
+                        <div class="pokemon-name">{{ pokemon[1] }}</div>
+                    </div>
+                    
+                   <div class="pokemon-type {{ pokemon[2]|lower|replace('é', 'e')|replace('ó', 'o')|replace('í', 'i')|replace('á', 'a')|replace('ú', 'u') }}">
+    {{ pokemon[2] }}
+</div>
+                    
+                    <div class="pokemon-details">
+                        <div class="detail-row">
+                            <span class="detail-label">ID:</span>
+                            <span class="detail-value">{{ pokemon[0] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Tipo:</span>
+                            <span class="detail-value">{{ pokemon[2] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Generación:</span>
+                            <span class="detail-value">{{ pokemon[3] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">HP:</span>
+                            <span class="detail-value">{{ pokemon[4] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Defensa:</span>
+                            <span class="detail-value">{{ pokemon[5] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Velocidad:</span>
+                            <span class="detail-value">{{ pokemon[6] }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Poder:</span>
+                            <span class="detail-value">{{ pokemon[7] }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pokemon-generation">
+                         generacion: {{ pokemon[3] }} - Total Stats: {{ pokemon[4] + pokemon[5] + pokemon[6] + pokemon[7] }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div style="grid-column: 1/-1; text-align: center; padding: 50px;">
+                    <h2 style="color: #666; margin-bottom: 20px;">
+                        <i class="fas fa-exclamation-triangle"></i> No hay Pokémon
+                    </h2>
+                    <p style="color: #888; font-size: 1.2rem;">
+                        No se encontraron Pokémon en la base de datos.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <footer>
+            <p>Total de Pokémon: {{ pokemons|length if pokemons else 0 }}</p>
+            {% if pokemons %}
+            <p>Estadísticas promedio: 
+                HP: {{ (pokemons|sum(attribute=4)/pokemons|length)|round(1) }},
+                Defensa: {{ (pokemons|sum(attribute=5)/pokemons|length)|round(1) }},
+                Velocidad: {{ (pokemons|sum(attribute=6)/pokemons|length)|round(1) }},
+                Poder: {{ (pokemons|sum(attribute=7)/pokemons|length)|round(1) }}
+            </p>
+            {% endif %}
+        </footer>
+    </div>
+</body>
+</html>
