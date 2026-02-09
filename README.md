@@ -1,4 +1,5 @@
 Pokédex Web - Sistema de Gestión Pokémon
+
  Descripción del Proyecto
 Pokédex Web es una aplicación completa construida con Flask y PostgreSQL que simula una enciclopedia digital Pokémon, permitiendo visualizar, organizar y analizar información sobre diferentes Pokémon con estadísticas detalladas.
 La aplicación permite gestionar información de distintos Pokémon, organizándolos por:
