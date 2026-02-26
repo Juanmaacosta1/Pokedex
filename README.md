@@ -8,16 +8,9 @@ Permite visualizar, organizar y analizar información detallada de distintas esp
 ![Base%20de%20datos](https://img.shields.io/badge/PostgreSQL-database-green)
 
 ---
-
-## 📸 Vista previa
-
-Agregá una captura dentro de la carpeta **/assets** para que aparezca acá:
-
-![Preview](assets/preview.png)
-
 ---
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 * Listado completo de Pokémon registrados
 * Visualización de estadísticas detalladas
